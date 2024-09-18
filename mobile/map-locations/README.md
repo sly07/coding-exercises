@@ -19,7 +19,7 @@ This exercise involves fetching data from a JSON file stored in this repository 
 3. **Fetch Location Data:**
     - The repository contains a JSON file, `locations.json`, that lists various locations.
     - Use the raw file content feature of GitHub for fetching data (think of it as a mock API). Please point it to your forked repository, not the Voze repository.
-        - `https://raw.githubusercontent.com/<YOUR_GITHUB_USER_NAME>/coding-exercises/mobile/map-locations/main/locations.json?token=<YOUR_TOKEN>`
+        - `https://raw.githubusercontent.com/<GITHUB_ACCOUNT_NAME>/coding-exercises/master/mobile/map-locations/locations.json`
     - Your task is to parse this file and use the data within the app.
 
 4. **Display Locations on a Map View:**
