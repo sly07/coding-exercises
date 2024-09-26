@@ -9,7 +9,7 @@ This exercise involves fetching data from a JSON file stored in this repository 
 ## Instructions
 
 1. **Fork the Repository:**
-    - Please begin by forking this repository into a private repository.
+    - Please begin by forking this repository.
     - All of your changes should be committed to your fork.
     - Optional: Use pull requests with short descriptions to help explain as you go through
 
@@ -62,7 +62,7 @@ This exercise involves fetching data from a JSON file stored in this repository 
 
 ## Submission
 
-1. Once you have completed the exercise, make the repository public and email a link to the forked repository.
+1. Once you have completed the exercise email a link to the forked repository.
 
 ## Evaluation Criteria
 
