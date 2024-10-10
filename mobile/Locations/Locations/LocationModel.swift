@@ -13,15 +13,12 @@ struct Location: Identifiable, Codable {
     let latitude: Double
     let longitude: Double
     let attributes: [Attribute]
+    
+    let locationType: LocationType
 
     // Computed property to get the coordinate
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-    }
-    
-    // Helper methods to access specific attributes
-    var locationType: String {
-        attributes.first { $0.type == "location_type" }?.value ?? ""
     }
     
     var name: String {
@@ -34,6 +31,30 @@ struct Location: Identifiable, Codable {
     
     var estimatedRevenueMillions: Double {
         Double(attributes.first { $0.type == "estimated_revenue_millions" }?.value ?? "0") ?? 0.0
+    }
+    
+    // Custom initializer to decode locationType from attributes
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(Int.self, forKey: .id)
+        latitude = try container.decode(Double.self, forKey: .latitude)
+        longitude = try container.decode(Double.self, forKey: .longitude)
+        attributes = try container.decode([Attribute].self, forKey: .attributes)
+
+        // Extract locationType from attributes array
+        if let typeString = attributes.first(where: { $0.type == "location_type" })?.value {
+            locationType = LocationType(rawValue: typeString) ?? .unknown
+        } else {
+            locationType = .unknown
+        }
+    }
+
+    // Coding keys for decoding
+    enum CodingKeys: String, CodingKey {
+        case id
+        case latitude
+        case longitude
+        case attributes
     }
 }
 
@@ -58,4 +79,26 @@ struct Attribute: Codable {
             ))
         }
     }
+}
+
+enum LocationType: String, Codable, CaseIterable {
+    case bar
+    case cafe
+    case landmark
+    case park
+    case museum
+    case restaurant
+
+    // Fallback case for unrecognized values
+    case unknown
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let rawValue = try container.decode(String.self)
+        
+        // Attempt to initialize from the raw string value, fallback to unknown if invalid
+        self = LocationType(rawValue: rawValue) ?? .unknown
+    }
+    
+    
 }

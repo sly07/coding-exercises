@@ -17,44 +17,86 @@ struct MapView: View {
     )
     
     @State var locations: [Location] = []
+    @State var filteredLocations: [Location] = []
     @State private var selectedLocation: Location? = nil
+    @State var showFilterActionSheet = false
     
     var body: some View {
-        ZStack {
-            Map(position: $cameraPosition) {
-                ForEach(locations) { location in
-                    Annotation(location.name, coordinate: location.coordinate) {
-                        VStack {
-                            Image(systemName: "mappin.circle.fill")
-                                .foregroundColor(.red)
-                                .font(.title)
-                                .background(.white)
-                                .clipShape(Circle())
-                                .onTapGesture {
-                                    withAnimation {
-                                        selectedLocation = location
+        NavigationView {
+            VStack {
+                Map(position: $cameraPosition) {
+                    ForEach(filteredLocations) { location in
+                        Annotation(location.name, coordinate: location.coordinate) {
+                            VStack {
+                                Image(systemName: "mappin.circle.fill")
+                                    .foregroundColor(getColorByLocationType(location: location))
+                                    .font(.title)
+                                    .background(.white)
+                                    .clipShape(Circle())
+                                    .onTapGesture {
+                                        withAnimation {
+                                            selectedLocation = location
+                                        }
                                     }
-                                }
-                            Text(location.name)
-                                .font(.caption)
+                                Text(location.name)
+                                    .font(.caption)
+                            }
                         }
                     }
                 }
-            }
-            if selectedLocation != nil {
-                VStack {
-                    Spacer()
+                
+                if selectedLocation != nil {
                     LocationDetailView(location: $selectedLocation)
-                        .frame(height: 300)
+                            .frame(height: 200)
+                }
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .task {
+                await fetchLocations()
+            }
+            .onMapCameraChange { context in
+                print("Camera moved to region: \(context.region)")
+            }
+            .navigationBarItems(trailing: Button(action: {
+                showFilterActionSheet = true
+            }) {
+                Image(systemName: "line.3.horizontal.decrease.circle")
+                    .font(.title2)
+            })
+            .confirmationDialog("Location Type Filter", isPresented: $showFilterActionSheet) {
+                ForEach(LocationType.allCases, id: \.self) { type in
+                    if type == .unknown {
+                        EmptyView()
+                    } else {
+                        Button(action: {
+                            filteredLocations = locations.filter {
+                                $0.locationType == type
+                            }
+                        }, label: {
+                            Text(type.rawValue)
+                        })
+                    }
                 }
             }
         }
-        .edgesIgnoringSafeArea(.all)
-        .task {
-            await fetchLocations()
-        }
-        .onMapCameraChange { context in
-            print("Camera moved to region: \(context.region)")
+    }
+    
+    func getColorByLocationType(location: Location) -> Color {
+        switch location.locationType {
+        case .bar:
+                .yellow
+        case .cafe:
+                .brown
+        case .landmark:
+                .blue
+        case .park:
+                .green
+        case .museum:
+                .purple
+        case .restaurant:
+                .red
+        case .unknown:
+                .white
         }
     }
     
@@ -68,6 +110,7 @@ struct MapView: View {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decodedLocations = try JSONDecoder().decode([Location].self, from: data)
             self.locations = decodedLocations
+            self.filteredLocations = decodedLocations
         } catch {
             print("Error fetching or decoding data: \(error)")
         }
