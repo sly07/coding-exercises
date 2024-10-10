@@ -47,22 +47,22 @@ struct MapView: View {
                 
                 if selectedLocation != nil {
                     LocationDetailView(location: $selectedLocation)
-                            .frame(height: 200)
                 }
             }
             .edgesIgnoringSafeArea(.bottom)
             .task {
                 await fetchLocations()
             }
-            .onMapCameraChange { context in
-                print("Camera moved to region: \(context.region)")
-            }
             .navigationBarItems(trailing: Button(action: {
                 showFilterActionSheet = true
             }) {
                 Image(systemName: "line.3.horizontal.decrease.circle")
                     .font(.title2)
+                    .foregroundStyle(Color.iconColor)
             })
+            .navigationTitle("Locations")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(Color.backGroundColor, for: .navigationBar)
             .confirmationDialog("Location Type Filter", isPresented: $showFilterActionSheet) {
                 ForEach(LocationType.allCases, id: \.self) { type in
                     if type == .unknown {
@@ -73,7 +73,8 @@ struct MapView: View {
                                 $0.locationType == type
                             }
                         }, label: {
-                            Text(type.rawValue)
+                            Text(type.displayName())
+                                .foregroundStyle(Color.red)
                         })
                     }
                 }
@@ -118,13 +119,23 @@ struct MapView: View {
 }
 
 struct LocationDetailView: View {
-    @Environment(\.dismiss) var dismiss
-    
     @Binding var location: Location?
     
     var body: some View {
         if let location = location {
-            ScrollView {
+                HStack {
+                    Spacer()
+                    Button( action: {
+                        withAnimation {
+                            self.location = nil
+                        }
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .foregroundStyle(Color.iconColor)
+                    })
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 8)
                 VStack(alignment: .leading) {
                     Text(location.name)
                         .font(.largeTitle)
@@ -137,21 +148,22 @@ struct LocationDetailView: View {
                         Text("Latitude: \(location.coordinate.latitude)")
                         Text("Longitude: \(location.coordinate.longitude)")
                     }
-                    
-                    Button("Dismiss") {
-                        withAnimation {
-                            self.location = nil
-                        }
-                    }
                 }
-                .padding()
+                .padding(.horizontal, 16)
+                .padding(.bottom, 48)
                 .frame(maxWidth: .infinity)
-            }
-            .background(ignoresSafeAreaEdges: .horizontal)
+                .background(ignoresSafeAreaEdges: .horizontal)
+                .background(Color.backGroundColor)
         }
     }
 }
 
 #Preview {
     MapView()
+}
+
+extension Color {
+    static var backGroundColor = Color.gray.opacity(0.2)
+    static var iconColor = Color.gray
+    static var textColor = Color.gray
 }

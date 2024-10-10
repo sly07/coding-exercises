@@ -100,5 +100,22 @@ enum LocationType: String, Codable, CaseIterable {
         self = LocationType(rawValue: rawValue) ?? .unknown
     }
     
-    
+    func displayName() -> String {
+        switch self {
+        case .bar:
+            "Bar"
+        case .cafe:
+            "Cafe"
+        case .landmark:
+            "Landmark"
+        case .park:
+            "Park"
+        case .museum:
+            "Museum"
+        case .restaurant:
+            "Restaurant"
+        case .unknown:
+            ""
+        }
+    }
 }
