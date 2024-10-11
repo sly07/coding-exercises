@@ -80,7 +80,7 @@ Do not edit any lines above this line break.
 
 ## Getting Started
 
-Launch mobile/SFLocations/SFLocations.xcodeproj. Build and run in a simulator of your choice or run Previews for MapView.
+Launch mobile/SFLocations/SFLocations.xcodeproj in XCode. Build and run in a simulator of your choice or run Previews for MapView.
 
 
 ## Implementation
