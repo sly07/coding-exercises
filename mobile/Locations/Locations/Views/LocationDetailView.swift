@@ -22,45 +22,36 @@ struct LocationDetailView: View {
                         }
                     }, label: {
                         Image(systemName: "xmark")
-                            .foregroundStyle(Color.iconColor)
+                            .foregroundStyle(Color.locationsIcon)
                     })
                 }
-                .padding(.top, 8)
+                .padding(.top, 16)
                 .padding(.bottom, 2)
                 
-                VStack(alignment: .leading, spacing: 8) { // Add spacing for readability
-                    // Title Styling
+                VStack(alignment: .leading, spacing: 8) {
                     Text(location.name)
-                        .font(.system(size: 32, weight: .bold, design: .serif)) // Elegant font for title
-                        .foregroundColor(Color.primary)
+                        .textStyle(.titleLargeStyle)
                         .padding(.bottom, 4)
                     
-                    // Description Styling
                     Text(location.description)
-                        .font(.body)
-                        .foregroundColor(Color.secondary) // Subtle color for description
-                        .lineSpacing(6) // Add line spacing for readability
+                        .textStyle(.subtitleStyle)
                     
-                    // Revenue Styling
                     Text("Estimated Revenue: $\(String(location.estimatedRevenueMillions)) million")
-                        .font(.headline)
-                        .foregroundColor(Color.green) // Differentiate revenue with accent color
+                        .textStyle(.accentStyle)
                         .padding(.top, 8)
                     
-                    // Coordinates Styling
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Latitude: \(location.coordinate.latitude)")
                         Text("Longitude: \(location.coordinate.longitude)")
                     }
-                    .font(.footnote) // Smaller font for coordinate details
-                    .foregroundColor(Color.gray)
+                    .textStyle(.footnoteStyle)
                     .padding(.top, 12)
                 }
                 .padding(.bottom, 48)
             }
             .padding(.horizontal, 24)
             .frame(maxWidth: .infinity)
-            .background(Color.backGroundColor)
+            .background(Color.locationsBackground)
         }
     }
 }

@@ -133,3 +133,9 @@ enum LocationType: String, Codable, CaseIterable {
         }
     }
 }
+
+extension Location: Equatable {
+    static func == (lhs: Location, rhs: Location) -> Bool {
+        lhs.id == rhs.id
+    }
+}

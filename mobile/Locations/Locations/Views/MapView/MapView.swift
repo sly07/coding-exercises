@@ -32,11 +32,13 @@ struct MapView: View {
                                     .font(.title)
                                     .background(.white)
                                     .clipShape(Circle())
+                                    .scaleEffect(selectedLocation == location ? 1.25 : 1.0)
                                     .onTapGesture {
                                         withAnimation {
                                             selectedLocation = location
                                         }
                                     }
+                                    .animation(.easeInOut, value: selectedLocation)
                             }
                         }
                     }
@@ -51,15 +53,15 @@ struct MapView: View {
             .edgesIgnoringSafeArea(.bottom)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    LocationFilterMenu(mapViewModel: viewModel)
+                    LocationFilterMenuView(mapViewModel: viewModel)
                 }
                 ToolbarItem(placement: .principal) {
                     Text("Locations")
-                        .textStyle(.primaryStyle)
+                        .textStyle(.titleStyle)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(Color.backGroundColor, for: .navigationBar)
+            .toolbarBackground(Color.locationsBackground, for: .navigationBar)
         }
     }
 }

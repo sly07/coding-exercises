@@ -1,5 +1,5 @@
 //
-//  FilterMenu.swift
+//  LocationFilterMenuView.swift
 //  Locations
 //
 //  Created by Mike Sly on 10/10/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LocationFilterMenu: View {
+struct LocationFilterMenuView: View {
     @State private var selectedFilters: Set<LocationType> = [] // Tracks selected items
     @ObservedObject var mapViewModel: MapViewModel
     
@@ -19,7 +19,7 @@ struct LocationFilterMenu: View {
                     mapViewModel.filterLocations(by: selectedFilters)
                 } label: {
                     Text("Clear")
-                        .foregroundStyle(Color.iconColor)
+                        .foregroundStyle(Color.locationsIcon)
                 }
                 
             }
@@ -30,8 +30,9 @@ struct LocationFilterMenu: View {
                             selectedFilters.remove(type)
                         } else {
                             selectedFilters.insert(type)
-                            mapViewModel.filterLocations(by: selectedFilters)
                         }
+                        
+                        mapViewModel.filterLocations(by: selectedFilters)
                     } label: {
                         HStack {
                             Text(type.displayName())
@@ -44,12 +45,12 @@ struct LocationFilterMenu: View {
                 }
             } label: {
                 Image(systemName: "line.horizontal.3.decrease.circle")
-                    .foregroundStyle(Color.iconColor)
+                    .foregroundStyle(Color.locationsIcon)
             }
         }
     }
 }
 
 #Preview {
-    LocationFilterMenu(mapViewModel: MapViewModel())
+    LocationFilterMenuView(mapViewModel: MapViewModel())
 }
