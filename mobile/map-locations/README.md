@@ -80,10 +80,9 @@ Do not edit any lines above this line break.
 
 ## Getting Started
 
-Fill out with necessary information and remove this line.
-
+Launch mobile/SFLocations/SFLocations.xcodeproj. Build and run in a simulator of your choice or run Previews for MapView.
 
 
 ## Implementation
 
-Fill out with necessary information and remove this line.
+I included some comments around how the implementation could be done differently given differe scenarios, requirements etc.
