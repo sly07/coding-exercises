@@ -37,12 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F033CD442CB60A4300DF5621 /* Locations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Locations.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F033CD442CB60A4300DF5621 /* SFLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F033CD472CB60A4300DF5621 /* LocationsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsApp.swift; sourceTree = "<group>"; };
 		F033CD4B2CB60A4400DF5621 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F033CD4E2CB60A4400DF5621 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F033CD542CB60A4500DF5621 /* LocationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F033CD5E2CB60A4500DF5621 /* LocationsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F033CD542CB60A4500DF5621 /* SFLocationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFLocationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F033CD5E2CB60A4500DF5621 /* SFLocationsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFLocationsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F033CD712CB60D3F00DF5621 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		F033CD732CB6239C00DF5621 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		F0BBBB5C2CB7877900F1EBA0 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 		F033CD3B2CB60A4300DF5621 = {
 			isa = PBXGroup;
 			children = (
-				F033CD462CB60A4300DF5621 /* Locations */,
+				F033CD462CB60A4300DF5621 /* SFLocations */,
 				F033CD452CB60A4300DF5621 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,14 +88,14 @@
 		F033CD452CB60A4300DF5621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F033CD442CB60A4300DF5621 /* Locations.app */,
-				F033CD542CB60A4500DF5621 /* LocationsTests.xctest */,
-				F033CD5E2CB60A4500DF5621 /* LocationsUITests.xctest */,
+				F033CD442CB60A4300DF5621 /* SFLocations.app */,
+				F033CD542CB60A4500DF5621 /* SFLocationsTests.xctest */,
+				F033CD5E2CB60A4500DF5621 /* SFLocationsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F033CD462CB60A4300DF5621 /* Locations */ = {
+		F033CD462CB60A4300DF5621 /* SFLocations */ = {
 			isa = PBXGroup;
 			children = (
 				F0BBBB662CB8A8F800F1EBA0 /* Views */,
@@ -106,7 +106,7 @@
 				F033CD4B2CB60A4400DF5621 /* Assets.xcassets */,
 				F033CD4D2CB60A4400DF5621 /* Preview Content */,
 			);
-			path = Locations;
+			path = SFLocations;
 			sourceTree = "<group>";
 		};
 		F033CD4D2CB60A4400DF5621 /* Preview Content */ = {
@@ -163,9 +163,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F033CD432CB60A4300DF5621 /* Locations */ = {
+		F033CD432CB60A4300DF5621 /* SFLocations */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F033CD682CB60A4500DF5621 /* Build configuration list for PBXNativeTarget "Locations" */;
+			buildConfigurationList = F033CD682CB60A4500DF5621 /* Build configuration list for PBXNativeTarget "SFLocations" */;
 			buildPhases = (
 				F033CD402CB60A4300DF5621 /* Sources */,
 				F033CD412CB60A4300DF5621 /* Frameworks */,
@@ -175,14 +175,14 @@
 			);
 			dependencies = (
 			);
-			name = Locations;
+			name = SFLocations;
 			productName = Locations;
-			productReference = F033CD442CB60A4300DF5621 /* Locations.app */;
+			productReference = F033CD442CB60A4300DF5621 /* SFLocations.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F033CD532CB60A4500DF5621 /* LocationsTests */ = {
+		F033CD532CB60A4500DF5621 /* SFLocationsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F033CD6B2CB60A4500DF5621 /* Build configuration list for PBXNativeTarget "LocationsTests" */;
+			buildConfigurationList = F033CD6B2CB60A4500DF5621 /* Build configuration list for PBXNativeTarget "SFLocationsTests" */;
 			buildPhases = (
 				F033CD502CB60A4500DF5621 /* Sources */,
 				F033CD512CB60A4500DF5621 /* Frameworks */,
@@ -193,14 +193,14 @@
 			dependencies = (
 				F033CD562CB60A4500DF5621 /* PBXTargetDependency */,
 			);
-			name = LocationsTests;
+			name = SFLocationsTests;
 			productName = LocationsTests;
-			productReference = F033CD542CB60A4500DF5621 /* LocationsTests.xctest */;
+			productReference = F033CD542CB60A4500DF5621 /* SFLocationsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F033CD5D2CB60A4500DF5621 /* LocationsUITests */ = {
+		F033CD5D2CB60A4500DF5621 /* SFLocationsUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F033CD6E2CB60A4500DF5621 /* Build configuration list for PBXNativeTarget "LocationsUITests" */;
+			buildConfigurationList = F033CD6E2CB60A4500DF5621 /* Build configuration list for PBXNativeTarget "SFLocationsUITests" */;
 			buildPhases = (
 				F033CD5A2CB60A4500DF5621 /* Sources */,
 				F033CD5B2CB60A4500DF5621 /* Frameworks */,
@@ -211,9 +211,9 @@
 			dependencies = (
 				F033CD602CB60A4500DF5621 /* PBXTargetDependency */,
 			);
-			name = LocationsUITests;
+			name = SFLocationsUITests;
 			productName = LocationsUITests;
-			productReference = F033CD5E2CB60A4500DF5621 /* LocationsUITests.xctest */;
+			productReference = F033CD5E2CB60A4500DF5621 /* SFLocationsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -239,7 +239,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F033CD3F2CB60A4300DF5621 /* Build configuration list for PBXProject "Locations" */;
+			buildConfigurationList = F033CD3F2CB60A4300DF5621 /* Build configuration list for PBXProject "SFLocations" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -252,9 +252,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F033CD432CB60A4300DF5621 /* Locations */,
-				F033CD532CB60A4500DF5621 /* LocationsTests */,
-				F033CD5D2CB60A4500DF5621 /* LocationsUITests */,
+				F033CD432CB60A4300DF5621 /* SFLocations */,
+				F033CD532CB60A4500DF5621 /* SFLocationsTests */,
+				F033CD5D2CB60A4500DF5621 /* SFLocationsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -320,12 +320,12 @@
 /* Begin PBXTargetDependency section */
 		F033CD562CB60A4500DF5621 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F033CD432CB60A4300DF5621 /* Locations */;
+			target = F033CD432CB60A4300DF5621 /* SFLocations */;
 			targetProxy = F033CD552CB60A4500DF5621 /* PBXContainerItemProxy */;
 		};
 		F033CD602CB60A4500DF5621 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F033CD432CB60A4300DF5621 /* Locations */;
+			target = F033CD432CB60A4300DF5621 /* SFLocations */;
 			targetProxy = F033CD5F2CB60A4500DF5621 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -524,7 +524,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Locations.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Locations";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SFLocations.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SFLocations";
 			};
 			name = Debug;
 		};
@@ -544,7 +544,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Locations.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Locations";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SFLocations.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SFLocations";
 			};
 			name = Release;
 		};
@@ -587,7 +587,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F033CD3F2CB60A4300DF5621 /* Build configuration list for PBXProject "Locations" */ = {
+		F033CD3F2CB60A4300DF5621 /* Build configuration list for PBXProject "SFLocations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F033CD662CB60A4500DF5621 /* Debug */,
@@ -596,7 +596,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F033CD682CB60A4500DF5621 /* Build configuration list for PBXNativeTarget "Locations" */ = {
+		F033CD682CB60A4500DF5621 /* Build configuration list for PBXNativeTarget "SFLocations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F033CD692CB60A4500DF5621 /* Debug */,
@@ -605,7 +605,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F033CD6B2CB60A4500DF5621 /* Build configuration list for PBXNativeTarget "LocationsTests" */ = {
+		F033CD6B2CB60A4500DF5621 /* Build configuration list for PBXNativeTarget "SFLocationsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F033CD6C2CB60A4500DF5621 /* Debug */,
@@ -614,7 +614,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F033CD6E2CB60A4500DF5621 /* Build configuration list for PBXNativeTarget "LocationsUITests" */ = {
+		F033CD6E2CB60A4500DF5621 /* Build configuration list for PBXNativeTarget "SFLocationsUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F033CD6F2CB60A4500DF5621 /* Debug */,
