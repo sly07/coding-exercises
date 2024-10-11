@@ -11,9 +11,8 @@ struct LocationDetailView: View {
     @Binding var location: Location?
     
     var body: some View {
-        if let location = location {
-            VStack(alignment: .leading) {
-                // Close button with improved alignment and padding
+        VStack(alignment: .leading) {
+            if let location = location {
                 HStack {
                     Spacer()
                     Button(action: {
@@ -35,23 +34,24 @@ struct LocationDetailView: View {
                     
                     Text(location.description)
                         .textStyle(.subtitleStyle)
+                        .padding(.bottom, 8)
                     
                     Text("Estimated Revenue: $\(String(location.estimatedRevenueMillions)) million")
                         .textStyle(.accentStyle)
-                        .padding(.top, 8)
+                        .padding(.bottom, 12)
                     
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Latitude: \(location.coordinate.latitude)")
                         Text("Longitude: \(location.coordinate.longitude)")
                     }
                     .textStyle(.footnoteStyle)
-                    .padding(.top, 12)
                 }
                 .padding(.bottom, 48)
             }
-            .padding(.horizontal, 24)
-            .frame(maxWidth: .infinity)
-            .background(Color.locationsBackground)
         }
+        .padding(.horizontal, 24)
+        .frame(maxWidth: .infinity, minHeight: 44)
+        .background(Color.locationsBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 25))
     }
 }

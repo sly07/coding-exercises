@@ -32,15 +32,11 @@ struct Location: Identifiable, Codable {
         longitude = try container.decode(Double.self, forKey: .longitude)
         attributes = try container.decode([Attribute].self, forKey: .attributes)
 
-        // Set coordinate directly
         coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-
-        // Extract values for name, description, and estimatedRevenueMillions from attributes
         name = attributes.first { $0.type == "name" }?.value ?? ""
         description = attributes.first { $0.type == "description" }?.value ?? ""
         estimatedRevenueMillions = Double(attributes.first { $0.type == "estimated_revenue_millions" }?.value ?? "0") ?? 0.0
 
-        // Set location type from attributes, defaulting to .unknown
         if let typeString = attributes.first(where: { $0.type == "location_type" })?.value {
             locationType = LocationType(rawValue: typeString) ?? .unknown
         } else {

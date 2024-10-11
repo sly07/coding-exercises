@@ -22,7 +22,7 @@ struct MapView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
+            ZStack {
                 Map(position: $cameraPosition) {
                     ForEach(viewModel.locations) { location in
                         Annotation(location.name, coordinate: location.coordinate) {
@@ -43,10 +43,13 @@ struct MapView: View {
                         }
                     }
                 }
+                .onMapCameraChange { context in
+                    print("Camera moved to region: \(context.region)")
+                }
                 
-                /// It is interesting that this animates as part of a VStack fading in and out but
-                /// as part of a ZStack fading out does not animate.
-                if selectedLocation != nil {
+                // Details Footer
+                VStack {
+                    Spacer()
                     LocationDetailView(location: $selectedLocation)
                 }
             }
@@ -56,12 +59,13 @@ struct MapView: View {
                     LocationFilterMenuView(mapViewModel: viewModel)
                 }
                 ToolbarItem(placement: .principal) {
-                    Text("Locations")
+                    Text("San Francisco Locations")
                         .textStyle(.titleStyle)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(Color.locationsBackground, for: .navigationBar)
+            .preferredColorScheme(.dark)
         }
     }
 }
