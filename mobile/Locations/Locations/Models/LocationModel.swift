@@ -44,16 +44,15 @@ struct Location: Identifiable, Codable {
         }
     }
     
-    // MARK: Encode to encoder
+    // MARK: Encode
+    /// We have to define the encoder because we added properties to Location to represent the attributes.
+    /// They are omitted from the encoder.
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(latitude, forKey: .latitude)
         try container.encode(longitude, forKey: .longitude)
         try container.encode(attributes, forKey: .attributes)
-        
-        // We do not need to encode `coordinate`, `name`, `description`, or `estimatedRevenueMillions`
-        // directly as they are derived from other properties.
     }
     
     // MARK: - Coding Keys
@@ -99,14 +98,12 @@ enum LocationType: String, Codable, CaseIterable {
     case museum
     case restaurant
 
-    // Fallback case for unrecognized values
     case unknown
     
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let rawValue = try container.decode(String.self)
         
-        // Attempt to initialize from the raw string value, fallback to unknown if invalid
         self = LocationType(rawValue: rawValue) ?? .unknown
     }
     

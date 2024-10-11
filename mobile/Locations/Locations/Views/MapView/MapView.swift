@@ -43,9 +43,6 @@ struct MapView: View {
                         }
                     }
                 }
-                .onMapCameraChange { context in
-                    print("Camera moved to region: \(context.region)")
-                }
                 
                 // Details Footer
                 VStack {

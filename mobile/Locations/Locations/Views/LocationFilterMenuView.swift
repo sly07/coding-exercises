@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LocationFilterMenuView: View {
-    @State private var selectedFilters: Set<LocationType> = [] // Tracks selected items
+    @State private var selectedFilters: Set<LocationType> = []
     @ObservedObject var mapViewModel: MapViewModel
     
     var body: some View {
